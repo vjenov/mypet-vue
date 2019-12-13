@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id = "app">{{message}}</div>
+	<div id = "app-2">
+		<span v-bind:title="message">
+			title
+		</span>
+	</div>
+	<div id = "app-3"><p v-if="seen">now you can see me</p></div>
+	<div id = "app-4">
+		<ol>
+			<li v-for="todo of todos">{{todo.text}}</li>
+		</ol>
+	</div>
+	<div id = "app-5">
+		<p>{{message}}</p>
+		<button v-on:click="reverseMessage">뒤집기</button>
+	</div>
+	<div id = "app-6">
+		<p>{{message}}</p>
+		<input v-model="text">
+	</div>
+	<script>
+	const app = new Vue({
+		el : '#app',
+		data : {message : '요'}
+	})
+	const app2 = new Vue({
+		el : '#app-2',
+		data: {
+			message: '이 페이지는 ' + new Date() + ' 에 로드 되었습니다'
+		}
+	})
+	const app3 = new Vue({
+		el : '#app-3',
+		data: {
+			seen : false
+		}
+	})
+	const app4 = new Vue({
+		el : '#app-4',
+		data : {
+			todos : [
+				{text : 'JavaScript'},
+				{text : 'Vue'},
+				{text : 'Something good'},
+			]
+		}
+	})
+	const app5 = new Vue({
+		el : '#app-5',
+		data : {
+			message: 'LMFAO'
+		},
+		methods: {
+		reverseMessage(){
+			this.message = this.message.split('').reverse().join('')
+			}
+		}
+	})
+	const app6 = new Vue({
+		el : '#app-6',
+		data : {
+			message : 'yo',
+			text : 'fuck'
+		}
+	})
+	</script>
+</body>
+</html>
